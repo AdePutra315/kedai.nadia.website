@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kedai Nadia - lokasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> <!-- Pastikan link AOS CSS ada di sini -->
+    <style>
+        body {
+            background-image: url('alamat.jpg'); /* Nama file gambar latar belakang */
+            background-size: cover; /* Memastikan gambar memenuhi layar */
+            background-repeat: no-repeat; /* Tidak mengulangi gambar */
+            background-position: center; /* Pusatkan gambar */
+            background-attachment: fixed; /* Gambar tetap saat menggulir */
+            color: #333; /* Warna teks default */
+        }
+
+        #map {
+    width: 100%; /* Peta akan memenuhi lebar elemen induknya */
+    height: 70vh; /* Peta akan memenuhi 70% dari tinggi tampilan layar */
+    display: flex; /* Menggunakan flexbox untuk memusatkan peta */
+    justify-content: center; /* Memusatkan secara horisontal */
+    align-items: center; /* Memusatkan secara vertikal */
+    margin-top: 8vh; /* Memberi jarak dari bagian atas layar */
+    margin-bottom: 8vh; /* Memberi jarak dari bagian bawah layar */
+}
+
+@media (max-width: 768px) {
+    #map {
+        height: 85vh; /* Ukuran tinggi peta pada layar kecil agar tetap proporsional */
+        margin-top: 5vh; /* Jarak atas lebih kecil pada layar kecil */
+        margin-bottom: 5vh; /* Jarak bawah lebih kecil pada layar kecil */
+    }
+}
+
+
+        .popup-container img {
+            max-width: 100%; /* Gambar tidak akan melebihi lebar container */
+            max-height: 300px; /* Batas maksimal tinggi gambar */
+            width: auto; /* Biarkan lebar proporsional */
+            height: auto; /* Biarkan tinggi proporsional */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: block;
+            margin: 10px auto;
+        }
+
+        .sidebar {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            height: 100%;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-toggle {
+            cursor: pointer;
+        }
+
+        @media (max-width: 676px) {
+            #map {
+                height: 650px;
+                z-index: -0;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        
+    .popup-container {
+        width: 300px; /* Sesuaikan lebar sesuai kebutuhan */
+        max-height: 400px; /* Membatasi ketinggian popup */
+        overflow-y: auto; /* Mengaktifkan scroll jika diperlukan */
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .popup-image {
+        border-radius: 5px;
+        width: 100%;
+        height: auto;
+    }
+
+
+
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar bg-[rgba(0,0,0,0.5)] backdrop-blur-lg flex flex-col h-full" data-aos="fade-right" data-aos-duration="600">
+        <a href="#" id="close-sidebar" class="text-right px-4 py-2 text-white text-3xl hover:text-gray-200 transition duration-300">✖</a>
+        <a href="./index.html.html" class="text-white hover:text-gray-200 mx-2 text-lg font-semibold transition duration-300"><em>Beranda</em></a>
+        <a href="./menu.html" class="mx-2 text-white hover:text-gray-200 text-lg font-semibold transition duration-300"><em>Menu</em></a>
+        <a href="./alamat.html" class="mx-2 text-white hover:text-gray-200 text-lg font-semibold transition duration-300"><em>Alamat</em></a>
+        <a href="./kontak.html" class="mx-2 text-white hover:text-gray-200 text-lg font-semibold transition duration-300"><em>Kontak</em></a>
+        <br />
+
+        <div class="footer mt-auto p-4">
+            <p class="mb-2 text-white text-center font-semibold">
+                <em>&copy; 2024 Kedai Nadia. Semua Hak Dilindungi.</em>
+            </p>
+        </div>
+    </div>
+
+    <!-- Navigasi -->
+    <nav class="shadow backdrop-blur-sm bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 fixed top-0 w-full z-10 text-white" data-aos="fade-down" data-aos-duration="2000">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Teks "Kedai Nadia" -->
+            <a href="#" class="text-4xl font-bold hover:text-yellow-400">
+                Kedai <span class="text-yellow-500">Nadia</span>
+            </a>
+
+            <!-- Navigasi Links -->
+            <div class="hidden md:flex space-x-6">
+                <a href="./index.html.html" class="hover:text-yellow-400 font-medium transition duration-300">Beranda</a>
+                <a href="./menu.html" class="hover:text-yellow-400 font-medium transition duration-300">Menu</a>
+                <a href="./alamat.html" class="hover:text-yellow-400 font-medium transition duration-300">Lokasi</a>
+                <a href="./kontak.html" class="hover:text-yellow-400 font-medium transition duration-300">Kontak</a>
+            </div>
+
+            <!-- Tombol Sidebar untuk Mobile -->
+            <button id="sidebar-toggle" class="md:hidden text-yellow-500 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Peta Lokasi -->
+    <section id="lokasi" class="mt-4 px-4">
+        <h2 class="text-4xl font-semibold text-center text-white mb-2 mt-4">Lokasi Kami</h2>
+        <div id="map" class="w-full h-96 bg-gray-300 rounded-lg mt-4"></div>
+    </section>
+
+<br>
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 py-6 text-center text-gray-400">
+        <div class="container mx-auto px-4">
+            <p class="text-gray-300 font-medium">
+                © 2024 <span class="text-yellow-500 font-bold">Kedai Nadia</span>. Semua Hak Dilindungi.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Inisialisasi AOS
+        AOS.init();
+        document.addEventListener("DOMContentLoaded", function () {
+    const map = L.map("map").setView([-6.11579433370017, 120.4577100130179], 18);
+
+    const osmLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "© OpenStreetMap contributors",
+        tileSize: 256,
+        noWrap: true
+    });
+
+    const googleSatLayer = L.tileLayer("https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}", {
+        subdomains: ["mt0", "mt1", "mt2", "mt3"],
+        attribution: "Google Maps",
+        maxZoom: 19,
+        noWrap: true,
+        style: 'element:all;visibility:on;element:labels;visibility:off;element:geometry;visibility:off;'
+    });
+
+    osmLayer.addTo(map);
+
+    const baseLayers = {
+        "Standar": osmLayer,
+        "Satelit": googleSatLayer
+    };
+
+    L.control.layers(baseLayers).addTo(map);
+
+    
+const umkmData = {
+    name: "Kedai Nadia",
+    rating: "4.3",
+    reviews: 45,
+    category: "Melayani Pemesanan Online",
+    buka: "Buka 10.00 pagi - Tutup pukul 10.00 Malam 🔻",
+    alamat: "Jl. Soekarno Hatta, Benteng, Kec. Benteng, Kab. Kepulauan Selayar, Sulawesi Selatan 92812",
+    phone: "6285191470323",
+    coords: [-6.11579433370017, 120.4577100130179],
+    imageUrl: "kedaisaya.jpg"
+};
+
+const marker = L.marker(umkmData.coords).addTo(map);
+marker.bindTooltip(umkmData.name, { permanent: true, direction: "top", className: "marker-tooltip" });
+marker.bindPopup(`
+    <div class="popup-container p-4 bg-white shadow-lg rounded-lg">
+        <div class="popup-header text-center mb-2">
+            <h3 class="text-xl font-bold">${umkmData.name}</h3>
+            <div class="popup-rating text-center text-yellow-500">⭐ ${umkmData.rating} <span>(${umkmData.reviews})</span></div>
+        </div>
+        <div class="popup-category text-center mb-2">${umkmData.category}</div>
+        <br>
+        <a class="shadow py-4 flex justify-center items-center h-10 bg-blue-500 text-white rounded-lg" href="https://maps.app.goo.gl/Xv2rQ3nahPDD23St5" style="color: white;">Buka di Google Maps</a>
+        <br>
+        <img src="${umkmData.imageUrl}" alt="${umkmData.name}" class="popup-image rounded-md max-w-full h-auto mt-2" />
+        <div class="popup-address mt-2"><i class="fas fa-map-marker-alt"></i> ${umkmData.alamat}</div>
+        <div class="popup-hours mt-2"><i class="fas fa-clock"></i> <span>${umkmData.buka}</span></div>
+        <div class="popup-contact mt-2">
+            <i class="fas fa-phone-alt"></i> 
+            <a href="https://wa.me/${umkmData.phone}" class="text-blue-500">${umkmData.phone}</a>
+        </div>
+    </div>
+`);
+
+        });
+
+        // JavaScript untuk Sidebar
+        const sidebar = document.getElementById("sidebar");
+        const sidebarToggle = document.getElementById("sidebar-toggle");
+        const closeSidebar = document.getElementById("close-sidebar");
+
+        sidebarToggle.addEventListener("click", function () {
+            sidebar.style.left = "0px";
+        });
+
+        closeSidebar.addEventListener("click", function () {
+            sidebar.style.left = "-250px";
+        });
+
+        const sidebarLinks = document.querySelectorAll(".sidebar a");
+        sidebarLinks.forEach((link) => {
+            link.addEventListener("click", function () {
+                sidebar.style.left = "-250px";
+            });
+        });
+
+        const toggleBtn = document.querySelector('button[aria-label="Toggle navigation menu"]');
+        const navLinks = document.querySelector('ul');
+
+        toggleBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>

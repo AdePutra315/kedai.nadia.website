@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Kedai Nadia - Kontak</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-image: url('kontak1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow: hidden; /* Menghindari scroll pada body */
+        }
+
+        .sidebar {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            height: 100%;
+            overflow-y: auto;
+            transition: left 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.7); /* Transparan */
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-toggle {
+            cursor: pointer;
+        }
+
+        .fullscreen-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Mengisi tinggi layar penuh */
+            text-align: center; /* Memastikan teks dalam kotak berada di tengah */
+        }
+
+        .contact-card {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .contact-card p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.3rem;
+            transition: background-color 0.3s;
+        }
+
+        .contact-card a:hover {
+            background-color: #45a049;
+        }
+
+        .contact-card a:active {
+            background-color: #1E90FF; /* Biru saat tombol diklik */
+        }
+
+        footer {
+            background: linear-gradient(to right, #1f2937, #374151, #4b5563);
+            color: #d1d5db;
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-top: auto; /* Memastikan footer berada di bawah konten */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <a href="#" id="close-sidebar" class="text-right px-4 py-2 text-white text-3xl hover:text-gray-200 transition">✖</a>
+        <a href="./index.html" class="hover:text-yellow-300">Beranda</a>
+        <a href="./menu.html" class="hover:text-yellow-300">Menu</a>
+        <a href="./alamat.html" class="hover:text-yellow-300">Lokasi</a>
+        <a href="./kontak.html" class="hover:text-yellow-300">Kontak</a>
+        <div class="mt-auto px-4 py-4 text-center">
+            <p>© 2024 Kedai Nadia. Semua Hak Dilindungi.</p>
+        </div>
+    </div>
+
+    <!-- Navigasi -->
+    <nav class="shadow backdrop-blur-sm bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 fixed top-0 w-full z-10 text-white" data-aos="fade-down" data-aos-duration="2000">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-4xl font-bold hover:text-yellow-400">
+                Kedai <span class="text-yellow-500">Nadia</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="./index.html" class="hover:text-yellow-400 font-medium transition duration-300">Beranda</a>
+                <a href="./menu.html" class="hover:text-yellow-400 font-medium transition duration-300">Menu</a>
+                <a href="./alamat.html" class="hover:text-yellow-400 font-medium transition duration-300">Lokasi</a>
+                <a href="./kontak.html" class="hover:text-yellow-400 font-medium transition duration-300">Kontak</a>
+            </div>
+            <button id="sidebar-toggle" class="md:hidden text-yellow-500 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Tombol Hubungi Kami -->
+    <div class="fullscreen-center">
+        <div class="contact-card">
+            <p class="text-lg font-medium">Ada pertanyaan atau ingin memesan? Hubungi kami melalui WhatsApp!</p>
+            <a href="https://wa.me/6285191470323" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold active:bg-blue-800 transition-all duration-300">
+                Hubungi Kami di WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <!-- Footer di Paling Bawah -->
+    <!-- Footer -->
+<footer class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 py-6 text-center text-gray-400">
+    <div class="container mx-auto px-4">
+    <p class="text-gray-300 font-medium">
+        © 2024 <span class="text-yellow-500 font-bold">Kedai Nadia</span>. Semua Hak Dilindungi.
+    </p>
+
+    <!-- Script -->
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const sidebarToggle = document.getElementById("sidebar-toggle");
+        const closeSidebar = document.getElementById("close-sidebar");
+
+        sidebarToggle.addEventListener("click", () => sidebar.style.left = "0px");
+        closeSidebar.addEventListener("click", () => sidebar.style.left = "-250px");
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+</body>
+</html>

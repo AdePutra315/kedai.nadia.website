@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Kedai Nadia</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('menu.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .sidebar {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            height: 100%;
+            overflow-y: auto;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-toggle {
+            cursor: pointer;
+        }
+
+        #menu {
+            overflow-y: auto;
+        }
+
+        .product {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <div id="sidebar" class="sidebar bg-[rgba(0,0,0,0.5)] backdrop-blur-lg flex flex-col h-full" data-aos="fade-right" data-aos-duration="600">
+        <a href="#" id="close-sidebar" class="text-right px-4 py-2 text-white text-3xl hover:text-gray-200 transition duration-300">✖</a>
+        <a href="./index.html" class="text-white hover:text-gray-200 mx-2 text-lg font-semibold transition duration-300"><em>Beranda</em></a>
+        <a href="./menu.html" class="mx-2 text-white hover:text-gray-200 text-lg font-semibold transition duration-300"><em>Menu</em></a>
+        <a href="./alamat.html" class="mx-2 text-white hover:text-gray-200 text-lg font-semibold transition duration-300"><em>Alamat</em></a>
+        <a href="./kontak.html" class="mx-2 text-white hover:text-gray-200 text-lg font-semibold transition duration-300"><em>Kontak</em></a>
+        <br />
+
+        <div class="footer mt-auto p-4">
+            <p class="mb-2 text-white text-center font-semibold">
+                <em>&copy; 2024 Kedai Nadia. Semua Hak Dilindungi.</em>
+            </p>
+        </div>
+    </div>
+
+    <nav class="shadow backdrop-blur-sm bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 fixed top-0 w-full z-10 text-white" data-aos="fade-down" data-aos-duration="2000">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-4xl font-bold hover:text-yellow-400">Kedai <span class="text-yellow-500">Nadia</span></a>
+            <div class="hidden md:flex space-x-6">
+                <a href="./index.html" class="hover:text-yellow-400 font-medium transition duration-300">Beranda</a>
+                <a href="./menu.html" class="hover:text-yellow-400 font-medium transition duration-300">Menu</a>
+                <a href="./alamat.html" class="hover:text-yellow-400 font-medium transition duration-300">Lokasi</a>
+                <a href="./kontak.html" class="hover:text-yellow-400 font-medium transition duration-300">Kontak</a>
+            </div>
+            <button id="sidebar-toggle" class="md:hidden text-yellow-500 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+  <!-- Menu Section -->
+<section id="menu" class="container mx-auto p-6">
+    <h2 class="text-3xl font-bold text-center mb-8 text-white">Menu Kedai Nadia</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+            <div class="product bg-white rounded-lg shadow-lg" data-aos="flip-right" data-aos-duration="2000">
+                <img src="mielevel3.jpg" alt="Mie Level 3" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-black-600">Mie Level 3</h3>
+                    <p class="text-gray-600">Mie Level 3: Bikin Lidah Terbakar dan Semangat Teruji</p>
+                    <span class="block text-orange-600 font-semibold">Rp 10.000</span>
+                    <a href="https://wa.me/6285191470323?text=Halo%2C%20saya%20ingin%20memesan%20Mie%20Level%203" target="_blank" class="mt-2 inline-block text-blue-600 hover:text-blue-800 font-semibold">Hubungi Kami via WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product bg-white rounded-lg shadow-lg" data-aos="flip-right" data-aos-duration="2000">
+                <img src="tela.2.jpg" alt="Teh Hijau" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-black-600">Tela-tela</h3>
+                    <p class="text-gray-600">Tela-tela dari ubi jalar yang dicampur dengan bumbu balado adalah makanan khas lezat.</p>
+                    <span class="block text-orange-600 font-semibold">Rp 10.000</span>
+                    <a href="https://wa.me/6285191470323?text=Halo%2C%20saya%20ingin%20memesan%20tela-tela" target="_blank" class="mt-2 inline-block text-blue-600 hover:text-blue-800 font-semibold">Hubungi Kami via WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-right" data-aos-duration="2000">
+                <img src="pisang.jpg" alt="Kue Brownies" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-black-600">Pisang Nugget Oreo Milo Susu</h3>
+                    <p class="text-gray-600">Pisang Nugget Oreo Milo Susu adalah camilan yang lezat dan menyenangkan.</p>
+                    <span class="block text-orange-600 font-semibold">Rp 10.000</span>
+                    <a href="https://wa.me/6285191470323?text=Halo%2C%20saya%20ingin%20memesan%20pisang%20nugget%20oreo%20milo%20susu" target="_blank" class="mt-2 inline-block text-blue-600 hover:text-blue-800 font-semibold">Hubungi Kami via WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-right" data-aos-duration="2000">
+                <img src="pisang1.jpg" alt="Kue Brownies" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-black-600">Pisang Nugget Keju strowbery</h3>
+                    <p class="text-gray-600">Pisang Nugget Keju Susu adalah makanan ringan yang sempurna untuk dinikmati bersama keluarga.</p>
+                    <span class="block text-orange-600 font-semibold">Rp 10.000</span>
+                    <a href="https://wa.me/6285191470323?text=Halo%2C%20saya%20ingin%20memesan%20pisang%20nugget%20keju%20strowbery" target="_blank" class="mt-2 inline-block text-blue-600 hover:text-blue-800 font-semibold">Hubungi Kami via WhatsApp</a>
+                </div>
+            </div>
+
+            
+  <!-- Menu Item -->
+  <div id="menu-4" class="product bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-right" data-aos-duration="2000">
+    <img src="bb.jpg" alt="Kue Brownies" class="w-full h-48 object-cover">
+    <div class="p-4">
+        <h3 class="text-xl font-semibold text-black-600">bakso goreng</h3>
+        <p class="text-gray-600">Bakso goreng adalah camilan renyah dengan inti daging bakso yang lezat. Nikmati sensasi crispy di luar dan lembut di dalam dalam setiap gigitan.</p>
+        <span class="block text-orange-600 font-semibold">Rp 10.000</span>
+        <a href="https://wa.me/6285191470323?text=Halo%2C%20saya%20ingin%20memesan%20bakso%20goreng" target="_blank" class="mt-2 inline-block text-blue-600 hover:text-blue-800 font-semibold">Hubungi Kami via WhatsApp</a>
+    </div>
+</div>
+
+<div id="menu-4" class="product bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-right" data-aos-duration="2000">
+    <img src="aa.jpg" alt="Kue Brownies" class="w-full h-48 object-cover">
+    <div class="p-4">
+        <h3 class="text-xl font-semibold text-black-600">bakso nugget</h3>
+        <p class="text-gray-600">Bakso nugget adalah camilan praktis yang terbuat dari daging bakso yang dibalut dengan adonan tepung, kemudian digoreng hingga renyah. Rasanya lezat dan cocok untuk camilan sehari-hari</p>
+        <span class="block text-orange-600 font-semibold">Rp 10.000</span>
+        <a href="https://wa.me/6285191470323?text=Halo%2C%20saya%20ingin%20memesan%20bakso%20nugget" target="_blank" class="mt-2 inline-block text-blue-600 hover:text-blue-800 font-semibold">Hubungi Kami via WhatsApp</a>
+    </div>
+</div>
+
+  <!-- Menu Item -->
+  <div id="menu-4" class="product bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-right" data-aos-duration="2000">
+    <img src="13.jpg" alt="Kue Brownies" class="w-full h-48 object-cover">
+    <div class="p-4">
+        <h3 class="text-xl font-semibold text-black-600">Pisang keju meses</h3>
+        <p class="text-gray-600">Pisang keju meses adalah camilan manis yang mengombinasikan pisang yang dipanggang atau digoreng dengan taburan keju parut dan meses cokelat. Rasanya gurih dan manis yang menggoda..</p>
+        <span class="block text-orange-600 font-semibold">Rp 10.000</span>
+        <a href="https://wa.me/6285191470323?text=Halo%2C%20saya%20ingin%20memesan%20pisang%20keju%20meses" target="_blank" class="mt-2 inline-block text-blue-600 hover:text-blue-800 font-semibold">Hubungi Kami via WhatsApp</a>
+    </div>
+</div>
+
+  <!-- Menu Item -->
+  <div id="menu-4" class="product bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-right" data-aos-duration="2000">
+    <img src="12.jpg" alt="Kue Brownies" class="w-full h-48 object-cover">
+    <div class="p-4">
+        <h3 class="text-xl font-semibold text-black-600">Pisang tiramisu coklat</h3>
+        <p class="text-gray-600">Pisang tiramisu cokelat adalah kombinasi manis pisang yang dipadukan dengan lapisan krim tiramisu dan taburan cokelat. Rasanya lembut dan lezat.</p>
+        <span class="block text-orange-600 font-semibold">Rp 10.000</span>
+        <a href="https://wa.me/6285191470323?text=Halo%2C%20saya%20ingin%20memesan%20pisang%20tiramisu%20coklat" target="_blank" class="mt-2 inline-block text-blue-600 hover:text-blue-800 font-semibold">Hubungi Kami via WhatsApp</a>
+    </div>
+</div>
+
+  <!-- Menu Item -->
+  <div id="menu-4" class="product bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-right" data-aos-duration="2000">
+    <img src="11.jpg" alt="Kue Brownies" class="w-full h-48 object-cover">
+    <div class="p-4">
+        <h3 class="text-xl font-semibold text-black-600">mie jebew</h3>
+        <p class="text-gray-600">Mie Jebaw adalah mie yang dibuat dari adonan tepung yang segar, lalu dimasak dengan bumbu khas yang pedas dan gurih. Rasanya kaya dan nikmat, cocok untuk pecinta mie yang ingin sesuatu yang lebih dari sekadar mie instan..</p>
+        <span class="block text-orange-600 font-semibold">Rp 10.000</span>
+        <a href="https://wa.me/6285191470323?text=Halo%2C%20saya%20ingin%20memesan%20mie%20jebew" target="_blank" class="mt-2 inline-block text-blue-600 hover:text-blue-800 font-semibold">Hubungi Kami via WhatsApp</a>
+    </div>
+</div>
+
+ <!-- Menu Item -->
+ <div id="menu-4" class="product bg-white rounded-lg shadow-lg overflow-hidden" data-aos="flip-right" data-aos-duration="2000">
+    <img src="10.jpg" alt="Kue Brownies" class="w-full h-48 object-cover">
+    <div class="p-4">
+        <h3 class="text-xl font-semibold text-black-600">pisang coklat oreo</h3>
+        <p class="text-gray-600">Pisang coklat Oreo adalah kombinasi pisang yang dipadukan dengan lapisan cokelat dan Oreo yang dihancurkan. Rasanya manis dan gurih, cocok untuk camilan lezat.</p>
+        <span class="block text-orange-600 font-semibold">Rp 10.000</span>
+        <a href="https://wa.me/6285191470323?text=Halo%2C%20saya%20ingin%20memesan%20pisang%20coklat%20oreo" target="_blank" class="mt-2 inline-block text-blue-600 hover:text-blue-800 font-semibold">Hubungi Kami via WhatsApp</a>
+    </div>
+</div>
+</div>
+</section>
+
+  
+<br><br><br><br><br><br><br>
+<!-- Footer -->
+<footer class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 py-6 text-center text-gray-400">
+<div class="container mx-auto px-4">
+<p class="text-gray-300 font-medium">
+    © 2024 <span class="text-yellow-500 font-bold">Kedai Nadia</span>. Semua Hak Dilindungi.
+</p>
+
+
+<style>
+/* Responsif untuk perangkat yang lebih kecil (mobile) */
+@media (max-width: 768px) {
+    footer {
+        margin-bottom: -30px; /* Margin bawah lebih kecil untuk mobile */
+        padding-top: 0; /* Menyesuaikan padding untuk mobile */
+    }
+}
+
+/* Responsif untuk perangkat lebih besar (desktop) */
+@media (min-width: 769px) {
+    footer {
+        margin-bottom: -50px; /* Margin bawah lebih besar untuk desktop */
+        padding-top: 0; /* Menyesuaikan padding untuk desktop */
+    }
+}
+</style>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('sidebar-toggle').addEventListener('click', function () {
+            document.getElementById('sidebar').style.left = '0';
+        });
+
+        document.getElementById('close-sidebar').addEventListener('click', function () {
+            document.getElementById('sidebar').style.left = '-250px';
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
